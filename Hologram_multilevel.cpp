@@ -5,7 +5,7 @@
 #include <string.h>
 #include <time.h>
 #include "uniform&gaussianRNG.h"
-#include "chi_46proposal_modulation_code.h"
+#include "khanh_1012proposal_modulation_code.h"
 
 /*******************	Definition of Constants	**************************/
 const double PI = 3.14159;						////  Value of pi
@@ -432,8 +432,8 @@ void main()
 	int* output_sun_park_6_9_4ary = (int*)calloc((Data_Size / 3) * (Data_Size / 3) * 6, sizeof(int)); // Output data for Sun-Park 6/9 modulation
 
 	// For Chi 4/6 4-ary modulation
-	int* input_chi_46_4ary = (int*)calloc((Data_Size / 4) * (Data_Size / 3) * 10, sizeof(int));  // Input data for Chi 46 modulation
-	int* output_chi_46_4ary = (int*)calloc((Data_Size / 4) * (Data_Size / 3) * 10, sizeof(int)); // Output data for Chi 46 modulation
+	int* input_khanh_1012_4ary = (int*)calloc((Data_Size / 4) * (Data_Size / 3) * 10, sizeof(int));  // Input data for Chi 46 modulation
+	int* output_khanh_1012_4ary = (int*)calloc((Data_Size / 4) * (Data_Size / 3) * 10, sizeof(int)); // Output data for Chi 46 modulation
 
 	// For Chi 24 4-ary modulation
 	int* input_chi_24_4ary = (int*)calloc(Data_Size * (Data_Size / 4) * 2, sizeof(int));  // Input data for Chi 24 modulation
@@ -704,8 +704,8 @@ void main()
 					exit(0);
 				}
 				for (i = 0; i < (Data_Size / 4) * (Data_Size / 3) * 10; i++)
-					input_chi_46_4ary[i] = rand() % M_ary, count_modul += 2, count_modul_M_ary++;
-				Encode_chiProposal46_4ary(inLDPC_symbol, input_chi_46_4ary, Page_Size);
+					input_khanh_1012_4ary[i] = rand() % M_ary, count_modul += 2, count_modul_M_ary++;
+				Encode_khanhProposal1012_4ary(inLDPC_symbol, input_khanh_1012_4ary, Page_Size);
 				count_M_ary += Page_Size * Page_Size;
 				count += Page_Size * Page_Size * 2;
 			}
@@ -770,10 +770,10 @@ void main()
 					exit(0);
 				}
 				for (i = 0; i < (Data_Size / 4) * (Data_Size / 3) * 10; i++)
-					input_chi_46_4ary[i] = rand() % M_ary,
+					input_khanh_1012_4ary[i] = rand() % M_ary,
 					count_modul += 2,
 					count_modul_M_ary++;
-				Encode_chiProposal46_4ary(inLDPC_symbol, input_chi_46_4ary, Page_Size);
+				Encode_khanhProposal1012_4ary(inLDPC_symbol, input_khanh_1012_4ary, Page_Size);
 				count_M_ary += Page_Size * Page_Size;
 				count += Page_Size * Page_Size * 2;
 			}
@@ -946,14 +946,14 @@ void main()
 						error_demodul[0]++;
 				}*/	
 
-				Decode_chiProposal46_4ary(output_chi_46_4ary, d_outViterbi_y, Page_Size);
+				Decode_khanhProposal1012_4ary(output_khanh_1012_4ary, d_outViterbi_y, Page_Size);
 				for (i = 0; i < (Data_Size / 3) * (Data_Size / 2) * 4; i++)
 				{
-					if (input_chi_46_4ary[i] != output_chi_46_4ary[i])
+					if (input_khanh_1012_4ary[i] != output_khanh_1012_4ary[i])
 						error_demodul_M_ary[1]++;
-					if (input_chi_46_4ary[i] >> 1 != output_chi_46_4ary[i] >> 1)
+					if (input_khanh_1012_4ary[i] >> 1 != output_khanh_1012_4ary[i] >> 1)
 						error_demodul[1]++;
-					if (input_chi_46_4ary[i] % 2 != output_chi_46_4ary[i] % 2)
+					if (input_khanh_1012_4ary[i] % 2 != output_khanh_1012_4ary[i] % 2)
 						error_demodul[1]++;
 				}
 				/*printf("Index\tInput_chi\tOutput_chi\n");
