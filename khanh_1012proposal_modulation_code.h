@@ -1,6 +1,6 @@
 ﻿#include <iostream>
 // Khanh 10/12
-void Encode_chiProposal46_4ary(int** PAGE, int* input_1Ddata, int PAGE_SIZE)
+void Encode_khanhProposal1012_4ary(int** PAGE, int* input_1Ddata, int PAGE_SIZE)
 {
     const int BLOCK_ROWS = 256;
     const int BLOCK_COLS = 341;
@@ -46,7 +46,7 @@ void Encode_chiProposal46_4ary(int** PAGE, int* input_1Ddata, int PAGE_SIZE)
     delete[] input;
 }
 
-void Decode_chiProposal46_4ary(int* output_1Ddata, double** PAGE, int PAGE_SIZE)
+void Decode_khanhProposal1012_4ary(int* output_1Ddata, double** PAGE, int PAGE_SIZE)
 {
     const int BLOCK_ROWS = 256;
     const int BLOCK_COLS = 341;
